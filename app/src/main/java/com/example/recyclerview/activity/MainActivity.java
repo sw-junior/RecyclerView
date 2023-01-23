@@ -46,36 +46,39 @@ public class MainActivity extends AppCompatActivity {
 
         //Evento de click
         recyclerView.addOnItemTouchListener(
-             new RecyclerItemClickListener(
-                     getApplicationContext(),
-                     recyclerView,
-                     new RecyclerItemClickListener.OnItemClickListener() {
-                         @Override
-                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                             Toast.makeText(
-                                     getApplicationContext(),
-                                     "Item pressionado",
-                                     Toast.LENGTH_SHORT
-                             ).show();
-                         }
+                new RecyclerItemClickListener(
+                        getApplicationContext(),
+                        recyclerView,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Filme filme = listaFilme.get(position);
+                                Toast.makeText(
+                                        getApplicationContext(),
+                                        filme.getTituloFilme(),
+                                        Toast.LENGTH_SHORT
+                                ).show();
+                            }
 
-                         @Override
-                         public void onItemClick(View view, int position) {
-                             Toast.makeText(
-                                     getApplicationContext(),
-                                     "Click longo",
-                                     Toast.LENGTH_SHORT
-                             ).show();
-                         }
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+                                Filme filme = listaFilme.get(position);
+                                Toast.makeText(
+                                        getApplicationContext(),
+                                        filme.getTituloFilme(),
+                                        Toast.LENGTH_SHORT
+                                ).show();
+                            }
 
-                         @Override
-                         public void onLongItemClick(View view, int position) {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                         }
-                     }
-             )
-
+                            }
+                        }
+                )
         );
+
+
 
     }
     public void criarFilmes(){
